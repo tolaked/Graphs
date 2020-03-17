@@ -30,12 +30,30 @@ class Graph:
         """
         return self.vertices[vertex_id]
 
-    def bft(self, starting_vertex):
+    def bft(self, starting_vertex, visited =None):
         """
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+         # Instantiate queue and enqueue the starting vertex ID
+        queue = Queue()
+        queue.enqueue(starting_vertex)
+        visited = set()
+
+    # loop over vertices while queue not empty
+        while queue.size > 0:
+            # dequeue the first vertex
+            vertex = queue.dequeue()
+
+         # if current vertex has not been visited
+            if vertex not in visited:
+                # mark it as visited by printing it out
+                # print(vertex)
+                visited.add(vertex)
+
+                # add all other neighbor to the back of the queue
+                for next_vertex in self.vertices[vertex]:
+                    queue.enqueue(next_vertex)
 
     def dft(self, starting_vertex):
         """
